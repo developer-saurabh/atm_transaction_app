@@ -5,10 +5,34 @@ class ATMProvider extends ChangeNotifier {
   double _balance = 5000.0;
   final List<Transaction> _history = [];
 
+  String? _accountHolderName;
+  String? _accountNumber;
+  String? _ifsc;
+  String? _mobile;
+  String? _email;
+
   double get balance => _balance;
   List<Transaction> get history => _history;
 
   static const double dailyLimit = 40000.0;
+
+  String? get accountHolderName => _accountHolderName;
+  String? get accountNumber => _accountNumber;
+
+  void setAccountInfo({
+    required String name,
+    required String accNumber,
+    required String ifsc,
+    required String mobile,
+    required String email,
+  }) {
+    _accountHolderName = name;
+    _accountNumber = accNumber;
+    _ifsc = ifsc;
+    _mobile = mobile;
+    _email = email;
+    notifyListeners();
+  }
 
   bool _limitWarningShownToday = false;
 

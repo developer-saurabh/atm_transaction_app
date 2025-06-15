@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dashboard_screen.dart';
+import 'account_opening_screen.dart'; // 👈 NEW
 import '../widgets/custom_button.dart';
 import '../theme/app_colors.dart';
 
@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_pinController.text == _correctPin) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const DashboardScreen()),
+        MaterialPageRoute(builder: (_) => const AccountOpeningScreen()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

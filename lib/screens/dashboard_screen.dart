@@ -21,7 +21,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final atmProvider = Provider.of<ATMProvider>(context);
     final limitUsedFraction = atmProvider.todayTotal / ATMProvider.dailyLimit;
 
-    // If limit warning just got triggered:
     if (atmProvider.limitWarningShown && limitUsedFraction >= 0.9) {
       Future.microtask(() => _showLimitWarning());
     }
@@ -89,6 +88,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               child: Column(
                 children: [
+                  if (atmProvider.accountHolderName != null)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(
+                        "Hello, ${atmProvider.accountHolderName} 👋",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
